@@ -1,0 +1,58 @@
+<template>
+    <lightning-card title="Scan Records">
+        <div class="slds-m-around_medium">
+            <!-- Flex container to position combobox and button side by side -->
+            <div class="slds-grid slds-gutters">
+                <!-- Combobox for object selection -->
+                <div class="slds-col slds-size_8-of-12">
+                    <lightning-combobox 
+                        label="Select Object" 
+                        value={selectedObject} 
+                        options={objectOptions} 
+                        onchange={handleObjectChange}>
+                    </lightning-combobox>
+                </div>
+
+                <!-- Start Scan button next to combobox -->
+                <div class="slds-col slds-size_4-of-12">
+                    <lightning-button 
+                        variant="brand" 
+                        label="Start Scan" 
+                        onclick={handleScanClick} 
+                        class="slds-m-top_large slds-float_left"
+                        disabled={isLoading}>
+                    </lightning-button>
+                </div>
+            </div>
+
+            <!-- Loading Spinner (visible only during scan) -->
+            <template if:true={isLoading}>
+                <div class="slds-m-top_medium slds-text-align_center">
+                    <lightning-progress-bar value="50" size="large"></lightning-progress-bar>
+                    <lightning-spinner alternative-text="Scanning in progress..." size="medium"></lightning-spinner>
+                    <p>Scanning in progress...</p>
+                </div>
+            </template>
+
+            <!-- Error Message Display -->
+            <template if:true={errorMessage}>
+                <div class="slds-text-color_error slds-m-top_medium">{errorMessage}</div>
+            </template>
+
+            <!-- Scan History Table -->
+            <template if:true={scanHistory}>
+                <div class="slds-m-top_medium">
+                    <lightning-card title="Scan History">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={scanHistory}
+                            columns={columns}
+                            hide-checkbox-column="true"
+                            onrowaction={handleRowAction}>
+                        </lightning-datatable>
+                    </lightning-card>
+                </div>
+            </template> 
+        </div>
+    </lightning-card>
+</template>

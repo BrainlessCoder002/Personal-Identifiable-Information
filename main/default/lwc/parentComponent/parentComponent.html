@@ -1,0 +1,10 @@
+<template>
+    
+    <lightning-card  variant="Narrow"  title="Parent Component" icon-name="standard:account">
+        <div class="slds-p-around_x-small">
+        <lightning-input type="text" variant="standard" label="Message" placeholder="type here..." 
+        onchange={handleChange}></lightning-input>
+        </div>
+        <c-child-component message = {messageFromParent}></c-child-component>
+    </lightning-card>
+</template>

@@ -1,0 +1,70 @@
+<template>
+    <lightning-card title="Create REGEX Rules" icon-name="custom:custom14">
+        <div class="slds-p-around_medium">
+            <!-- PII Name Input -->
+            <lightning-input
+                label="PII Name"
+                placeholder="Enter PII Name"
+                value={piiName}
+                onchange={handleInputChange}>
+            </lightning-input>
+
+            <!-- PII Type Input -->
+            <lightning-input
+                label="PII Type"
+                placeholder="Enter PII Type"
+                value={piiType}
+                onchange={handleInputChange}
+                required>
+            </lightning-input>
+
+            <!-- REGEX Pattern Input -->
+            <lightning-textarea
+                label="REGEX Pattern"
+                placeholder="Enter REGEX Pattern"
+                value={regexPattern}
+                onchange={handleInputChange}
+                required>
+            </lightning-textarea>
+
+            <!-- Description Input -->
+            <lightning-textarea
+                label="Description"
+                placeholder="Enter description"
+                value={description}
+                onchange={handleInputChange}>
+            </lightning-textarea>
+
+            <!-- Is Active Checkbox -->
+            <lightning-input
+                type="checkbox"
+                label="Active"
+                checked={isActive}
+                onchange={handleInputChange}>
+            </lightning-input>
+
+            <!-- Error Message -->
+            <template if:true={hasError}>
+                <div class="slds-text-color_error slds-m-top_medium">
+                    {errorMessage}
+                </div>
+            </template>
+
+            <!-- Action Buttons -->
+            <div class="slds-m-top_medium">
+                <lightning-button
+                    label="Save Rule"
+                    variant="brand"
+                    onclick={handleSaveRule}
+                    class="slds-m-right_small">
+                </lightning-button>
+
+                <lightning-button
+                    label="Clear Form"
+                    variant="neutral"
+                    onclick={handleClearForm}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

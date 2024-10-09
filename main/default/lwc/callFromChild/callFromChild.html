@@ -1,0 +1,12 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Child Component" icon-name="standard:account">
+    <div class="slds-m-left--x-small">
+    
+    
+        <lightning-input type="text" variant="standard" label="Message" placeholder="type here..."  onchange={handleChange} value={textVal}> </lightning-input>
+    
+    
+        <lightning-button variant="brand" label="Pass Data" title="Pass Data" onclick={handleClick}></lightning-button>
+    </div>
+    </lightning-card>
+    </template>

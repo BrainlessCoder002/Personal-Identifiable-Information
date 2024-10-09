@@ -1,0 +1,27 @@
+<!-- scanRecords.html -->
+<template>
+    <lightning-card title="Scan Records">
+        <lightning-combobox 
+            label="Select Object"
+            placeholder="Select an Object"
+            value={selectedObject}
+            options={objectOptions}
+            onchange={handleObjectChange}>
+        </lightning-combobox>
+
+        <lightning-button 
+            label="Start Scan"
+            variant="brand"
+            onclick={startScan}>
+        </lightning-button>
+
+        <template if:true={showResultLink}>
+            <lightning-button 
+                label="View Scan Results"
+                variant="neutral"
+                onclick={redirectToScanResult}
+                class="slds-m-top_medium">
+            </lightning-button>
+        </template>
+    </lightning-card>
+</template>
